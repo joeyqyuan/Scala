@@ -1,0 +1,16 @@
+#default minPartitions parameters.
+#There is an issue reading bzip from spark. Sometimes there are missing data.
+scala>
+
+val f = sc.textFile("s3://abc/def/", 20)
+val f = sc.textFile("s3://abc/def/")
+
+f.getNumPartitions
+
+f.count
+
+/** Default min number of partitions for Hadoop RDDs when not given by user 
+
+  def defaultMinPartitions: Int = math.min(defaultParallelism, 2)
+  
+*/
